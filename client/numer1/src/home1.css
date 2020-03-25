@@ -1,0 +1,32 @@
+.header {
+     padding: 60px;
+    text-align: center;
+    background: #2491EF;
+    color: #ffffff;
+    font-size: 60px; 
+    
+  }
+  .box{
+   margin-top: 4000;
+    background-color: rgba(66, 61, 61, 0.116);
+    width: 1150px;
+    border: 15px solid rgba(50, 98, 201, 0.849);
+    padding: 30px;
+    
+  }
+
+  .box1{
+    
+    background-color: lightgrey;
+    width: 1400px;
+    border: 15px solid rgba(50, 98, 201, 0.849);
+    padding: 30px;
+  }
+
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+  }

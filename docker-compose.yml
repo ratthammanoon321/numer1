@@ -1,0 +1,54 @@
+version: "3"
+
+services: 
+    database:
+        image: mysql:5.7
+        environment: 
+            MYSQL_ROOT_PASSWORD: 1111
+        volumes:
+            - ./db_data:/var/lib/mysql
+        networks: 
+            - numer
+        restart: always
+    php:
+        depends_on: 
+            - database
+        build: 
+            dockerfile: Dockerfile
+            context: ./server
+        ports: 
+            - 8080:80
+        volumes: 
+            - ./server:/var/www/html
+        restart: always
+        networks: 
+            - numer
+    phpmyadmin:
+        depends_on:
+            - database
+        image: phpmyadmin/phpmyadmin
+        environment: 
+            PMA_ARBITRARY: 1
+        networks:
+            - numer
+        restart: always
+        ports:
+            - 8888:80  
+    myreactapp:
+        depends_on: 
+            - database
+            - php
+        build: 
+            dockerfile: Dockerfile
+            context: ./client/numer1
+        ports: 
+            - 3000:3000
+        restart: always
+        networks: 
+            - numer
+   
+
+volumes:
+    db_data:
+networks: 
+    numer: 
